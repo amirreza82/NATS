@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  nats:
+    image: nats:latest
+    container_name: nats-server
+    ports:
+      - "4222:4222"   # NATS client port
+      - "6222:6222"   # NATS routing port
+      - "8222:8222"   # NATS HTTP monitoring port
+    environment:
+      - NATS_SERVER_NAME=nats-server
+      - NATS_CLUSTER_USER=admin
+      - NATS_CLUSTER_PASSWORD=password
