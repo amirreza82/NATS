@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nats-learning
+  labels:
+    app: nats
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nats
+  template:
+    metadata:
+      labels:
+        app: nats
+    spec:
+      containers:
+        - name: nats-server
+          image: nats:latest
+          ports:
+            - containerPort: 4222
